@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+<!--namespace中的包名要和接口名一致-->
+<mapper namespace="dao.PersonDAO">
+
+    <!--id是对应接口中的方法-->
+    <insert id="addPerson" parameterType="pojo.Person">
+        insert into person (username,name,age,telenum) values (#{username},#{name},#{age},#{telenum})
+    </insert>
+
+    <delete id="removePerson" parameterType="String">
+        delete from person where username = #{username}
+    </delete>
+
+    <select id="getPersonList" resultType="pojo.Person">
+        select * from person
+    </select>
+
+    <update id="updatePerson" parameterType="pojo.Person">
+        update person set name = #{name}, age = #{age}, telenum = #{telenum} where username = #{username}
+    </update>
+
+
+</mapper>

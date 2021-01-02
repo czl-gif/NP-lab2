@@ -1,0 +1,11 @@
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/servlet/LoginServlet.java
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/service/PersonServiceImpl.java
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/servlet/RegistServlet.java
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/dao/PersonDAO.java
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/pojo/User.java
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/dao/UserDAO.java
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/service/UserService.java
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/pojo/Person.java
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/service/UserServiceImpl.java
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/utils/MybatisUtil.java
+/home/lenovo/大三课程/新编程技术实务/lab4/server/src/main/java/service/PersonService.java

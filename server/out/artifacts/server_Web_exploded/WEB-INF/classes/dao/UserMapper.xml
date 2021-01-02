@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个对应的DAO/Mapper接口-->
+<!--namespace中的包名和接口名一致-->
+<mapper namespace="dao.UserDAO">
+    <!--id是对应接口中的方法-->
+    <insert id="addUser" parameterType = "pojo.User">
+        insert into user (username,password) values (#{username}, #{password})
+    </insert>
+
+    <delete id = "removeUser" parameterType = "String">
+        delete from user where username = #{username}
+    </delete>
+
+    <select id = "getUserList" resultType = "pojo.User">
+        select * from user
+    </select>
+</mapper>
