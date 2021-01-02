@@ -20,4 +20,13 @@
         <servlet-name>RegistServlet</servlet-name>
         <url-pattern>/RegistServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WelcomeServlet</servlet-name>
+        <servlet-class>servlet.WelcomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WelcomeServlet</servlet-name>
+        <url-pattern>/WelcomeServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
