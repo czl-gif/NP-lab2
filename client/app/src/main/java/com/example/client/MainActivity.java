@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.json.JSONObject;
 
 import java.io.InputStream;
@@ -73,7 +75,7 @@ public class MainActivity extends Activity {
             String username = params[0];
             String password = params[1];
             String result = "";
-            String strurl = "http://192.168.43.46:8080/server/LoginServlet?username="
+            String strurl = "http://81.68.74.65:8080/server/LoginServlet?username="
                     +username+"&password="+password;
             //String strurl = "http://42.194.181.52:8080/lab4/Sign??username="
               //      +username+"&password="+password;
@@ -124,14 +126,14 @@ public class MainActivity extends Activity {
     private void SignInSuccess(JSONObject info) {
         Intent intent = new Intent(this, WelcomeActivity.class);
         Toast.makeText(this,"登录成功",Toast.LENGTH_SHORT).show();
-        /*try {
-            intent.putExtra("username", info.getString("username"));
-            intent.putExtra("name", info.getString("name"));
+        try {
+            intent.putExtra("username", user);
+            /*intent.putExtra("name", info.getString("name"));
             intent.putExtra("age", info.getInt("age"));
-            intent.putExtra("teleno", info.getString("teleno"));
+            intent.putExtra("teleno", info.getString("teleno"));*/
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
         startActivity(intent);
     }
 
@@ -152,4 +154,66 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void Forget(View view){
+        user = usernameEditText.getText().toString();
+        if(user.isEmpty()){
+            Toast.makeText(MainActivity.this,"请输入用户名!",Toast.LENGTH_SHORT).show();
+        }else{
+            new ForgetRequest().execute(user, "shjdh");
+        }
+    }
+
+    private class ForgetRequest extends AsyncTask<String, String, String>{
+        @Override
+        protected String doInBackground(String...params) {
+            String username = params[0];
+            String password = params[1];
+            String result = "";
+            String strurl = "http://81.68.74.65:8080/server/LoginServlet?username="
+                    +username+"&password="+password;
+            //String strurl = "http://42.194.181.52:8080/lab4/Sign??username="
+            //      +username+"&password="+password;
+            try {
+                URL url = new URL(strurl);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.setUseCaches(false);
+                conn.connect();
+                InputStream is = conn.getInputStream();
+                InputStreamReader reader = new InputStreamReader(is, "UTF-8");
+                int temp;
+                while((temp=reader.read()) != -1) {
+                    result += (char)temp;
+                }
+
+            } catch(Exception e) {
+                Toast.makeText(MainActivity.this,"lianjieshibai",Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+            //Toast.makeText(MainActivity.this, result+"hh" ,Toast.LENGTH_SHORT).show();
+            Log.e("mei1ianjie:", result);
+            System.out.println(result);
+            return result;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            Toast.makeText(MainActivity.this,result,Toast.LENGTH_SHORT).show();
+            try {
+                JSONObject result_json = new JSONObject(result);
+                String answer = (String) result_json.get("Result");
+                Toast.makeText(MainActivity.this,answer,Toast.LENGTH_SHORT).show();
+                if(answer.equals("ssh")) {
+                    Toast.makeText(MainActivity.this,"用户不存在",Toast.LENGTH_SHORT).show();
+                } else {
+                    //Toast.makeText(MainActivity.this,"lianjiechenggong",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, ForgetPasswordActivity.class);
+                    intent.putExtra("username",user);
+                    startActivity(intent);
+                }
+            } catch (Exception e) {
+                Toast.makeText(MainActivity.this,"cuowu",Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+    }
 }

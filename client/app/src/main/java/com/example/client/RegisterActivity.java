@@ -70,7 +70,7 @@ public class RegisterActivity extends Activity {
 
     public void RegisterRequest(final String username, final String name, final String password, final Integer age, final String telenum){
         //请求地址
-        String url = "http://192.168.43.46:8080/server/RegistServlet";
+        String url = "http://81.68.74.65:8080/server/RegistServlet";
         String tag = "register";
         //取得请求队列
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());

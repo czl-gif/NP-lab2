@@ -22,6 +22,20 @@ public class UserServiceImpl implements UserService{
         sqlSession.close();
         return i > 0 ? true : false;
     }
+
+    @Override
+    public boolean removeUser(User user){
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        UserDAO userDAO = sqlSession.getMapper(UserDAO.class);
+
+        int i = userDAO.removeUser(user.getUsername());
+        if (i > 0) {
+            sqlSession.commit();
+        }
+        sqlSession.close();
+        return i > 0 ? true : false;
+    }
+
     @Override
     public List<User> getUserList() {
         List<User> userList = null;
@@ -57,5 +71,11 @@ public class UserServiceImpl implements UserService{
         else if (!rightpas) return 0;//有该用户，但是密码输入错误
         else
             return 1;//有该用户，且密码输入正确
+    }
+    @Override
+    public boolean changePassword(User user){
+        boolean isok = false;
+        isok = removeUser(user) && addUser(user);
+        return isok;
     }
 }

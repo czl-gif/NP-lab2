@@ -62,7 +62,7 @@ public class WelcomeActivity extends Activity {
 
     public void SignInRequest() {
         //请求地址
-        String url = "http://192.168.43.46:8080/server/welcomeServlet";
+        String url = "http://81.68.74.65:8080/server/WelcomeServlet";
         String tag = "welcome";
         //取得请求队列
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -78,7 +78,9 @@ public class WelcomeActivity extends Activity {
 //                            String result = jsonObject.getString("Result");
 
                             name = jsonObject.getString("name");
-                            age = Integer.valueOf(jsonObject.getString("age"));
+
+
+                                age = Integer.valueOf(jsonObject.getString("age"));
                             telenum = jsonObject.getString("telenum");
 //                            System.out.println(username);
 //                            System.out.println(name);

@@ -32,4 +32,18 @@ public class PersonServiceImpl implements PersonService{
         sqlSession.close();
         return i > 0 ? true : false;
     }
+    @Override
+    public boolean iscorrectTelenum(String username, String telenum){
+        boolean isCorrect = false;
+        List<Person> personList = getPersonList();
+        for(Person person:personList){
+            if(username.equals(person.getUsername())){
+                if(telenum.equals(person.getTelenum())){
+                    isCorrect = true;
+                }
+                break;
+            }
+        }
+        return isCorrect;
+    }
 }

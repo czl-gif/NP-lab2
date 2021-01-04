@@ -111,13 +111,12 @@
                 android:textOff="@null"
                 android:textOn="@null" />
         </LinearLayout>
-        <!--
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="30dp"
             android:paddingTop="20dp"
-            android:background="#e000000"
             android:gravity="center"
             android:orientation="horizontal">
             <TextView
@@ -126,7 +125,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:text="忘记密码?"
-                android:textColor="#121212"
+                android:textColor="@color/design_default_color_primary_variant"
                 android:textSize="15sp"/>
 
             <TextView
@@ -137,10 +136,10 @@
                 android:layout_gravity="center"
                 android:text="点击此处"
                 android:onClick="Forget"
-                android:textColor="#121212"
+                android:textColor="@color/design_default_color_error"
                 android:textSize="20sp"/>
         </LinearLayout>
-        -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,5 +1,12 @@
 plugins {
     id 'com.android.application'
+    id 'com.mob.sdk'
+}
+
+MobSDK {
+    appkey "31f7e3f50f5d3"
+    appSecret "5b3562f11008844243af420fb84bd9e6"
+    SMSSDK {}
 }
 
 android {
@@ -37,4 +44,5 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
 }
