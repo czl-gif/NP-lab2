@@ -73,12 +73,12 @@ public class ChangePasswordActivity extends Activity {
 
         String mess = "";
         if (pass1.isEmpty()) {
-            toast(" Please enter your new password! ");
+            toast(" 请输入新密码! ");
             f1 = false;
         } else {
             if (pass1.length() < 6 || pass1.length() > 12)
 
-                mess += " Password length needs 6-12 digits ";
+                mess += " 密码长6-12位 ";
 
             String pattern6 = "[a-zA-Z\\d_]*";
 
@@ -86,7 +86,7 @@ public class ChangePasswordActivity extends Activity {
 
             if (!match6) {
 
-                mess += " The password should consist of English letters, numbers and _ ";
+                mess += " 密码只允许包含英文字母、数字和_ ";
 
             }
 
@@ -99,7 +99,7 @@ public class ChangePasswordActivity extends Activity {
 
         if (f1) {
             if (!pass1.equals(pass2)) {
-                toast(" Passwords entered twice are inconsistent ");
+                toast(" 密码第二次输入不正确 ");
             }else{
                 isok = true;
             }
@@ -126,11 +126,11 @@ public class ChangePasswordActivity extends Activity {
                             JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");
                             String result = jsonObject.getString("Result");
                             if (result.equals("ChangeSucceed")) {
-                                Toast.makeText(ChangePasswordActivity.this, "Change Succeed!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChangePasswordActivity.this, "修改成功!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
                                 startActivity(intent);
                             } else if (result.equals("ChangeFail")) {
-                                Toast.makeText(ChangePasswordActivity.this, "The username does not exist!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChangePasswordActivity.this, "发生错误!", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(ChangePasswordActivity.this, "纳尼", Toast.LENGTH_SHORT).show();
                             }

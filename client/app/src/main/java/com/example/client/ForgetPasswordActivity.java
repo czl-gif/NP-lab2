@@ -80,7 +80,10 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(ForgetPasswordActivity.this, str, Toast.LENGTH_SHORT).show();
+                Toast toast=Toast.makeText(ForgetPasswordActivity.this,null,Toast.LENGTH_SHORT);
+                toast.setText(str);
+                toast.show();
+                //Toast.makeText(ForgetPasswordActivity.this, str, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -104,13 +107,15 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
                             JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");
                             String result = jsonObject.getString("Result");
                             if (result.equals("IncorrectTelenum")) {
-                                Toast.makeText(ForgetPasswordActivity.this, "Phone number does not match username", Toast.LENGTH_SHORT).show();
+                                toast("请输入正确的电话号码!");
+                                //Toast.makeText(ForgetPasswordActivity.this, "请输入正确的电话号码!", Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                Toast.makeText(ForgetPasswordActivity.this, "Phone number match", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(ForgetPasswordActivity.this,ChangePasswordActivity.class);
-                                intent.putExtra("username",username);
-                                startActivity(intent);
+                                alterWarning();
+                                //Toast.makeText(ForgetPasswordActivity.this, "Phone number match", Toast.LENGTH_SHORT).show();
+                                //Intent intent = new Intent(ForgetPasswordActivity.this,ChangePasswordActivity.class);
+                                //intent.putExtra("username",username);
+                                //startActivity(intent);
                             }
                         } catch (JSONException e) {
                             //做自己的请求异常操作，如Toast提示（“无网络连接”等）
@@ -164,11 +169,13 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
         public void afterEvent(int event, int result, Object data) {
             if (result == SMSSDK.RESULT_COMPLETE) {
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
-                    toast("Verification succeed");
-                    ForgetPasswordRequest(username,phone);
+                    toast("验证成功");
+                    Intent intent = new Intent(ForgetPasswordActivity.this,ChangePasswordActivity.class);
+                    intent.putExtra("username",username);
+                    startActivity(intent);
 
                 }else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){       //获取验证码成功
-                    toast("Get verification code succeed");
+                    toast("验证码发送成功");
                 }else if (event ==SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES){//如果你调用了获取国家区号类表会在这里回调
                     //返回支持发送验证码的国家列表
                 }
@@ -176,8 +183,8 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
                 //错误码请参照http://wiki.mob.com/android-api-错误码参考/这里我就不再继续写了
                 ((Throwable)data).printStackTrace();
                 String str = data.toString();
-                //toast(str);
-                toast("Verify Code Error!");
+
+
             }
         }
     };
@@ -261,6 +268,7 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
         builder.create().show();
     }
 
+
     @Override
     public void onClick(View v) {
 
@@ -276,9 +284,11 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
                     Matcher matcher = pattern.matcher(phone);
                     // 通过匹配器查找是否有该字符，不可重复调用重复调用matcher.find()
                     if (matcher.find()) {//匹配手机号是否存在
-                        alterWarning();
+                        //alterWarning();
+                        ForgetPasswordRequest(username, phone);
 
-                    } else {
+                    }
+                    else {
                         toast("Phone number's format error ");
                     }
                 } else {

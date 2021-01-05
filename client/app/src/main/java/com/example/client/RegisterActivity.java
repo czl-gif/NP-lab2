@@ -64,8 +64,7 @@ public class RegisterActivity extends Activity {
         t1=findViewById(R.id.t1);
         p1=findViewById(R.id.pw1);
         p2=findViewById(R.id.pw2);
-        submitButton = findViewById(R.id.button3);
-        cancleButton = findViewById(R.id.button4);
+
     }
 
     public void RegisterRequest(final String username, final String name, final String password, final Integer age, final String telenum){
@@ -84,12 +83,12 @@ public class RegisterActivity extends Activity {
                         try {
                             JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");
                             String result = jsonObject.getString("Result");
-                            if (result.equals("TheNameAlreadyExists")) {
-                                Toast.makeText(RegisterActivity.this, "The Name Already Exists!", Toast.LENGTH_SHORT).show();
-                            } else if(result.equals("TheUsernameAlreadyExists")){
-                                Toast.makeText(RegisterActivity.this, "The Username Already Exists!", Toast.LENGTH_SHORT).show();
+                            if(result.equals("TheUsernameAlreadyExists")){
+                                toast("用户名已经存在!");
+                                //Toast.makeText(RegisterActivity.this, "The Username Already Exists!", Toast.LENGTH_SHORT).show();
                             }else {//SignUpSucceed
-                                Toast.makeText(RegisterActivity.this, "Sign Up Succeed!", Toast.LENGTH_SHORT).show();
+                                toast("注册成功!");
+                                //Toast.makeText(RegisterActivity.this, "Sign Up Succeed!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                                 startActivity(intent);
                             }
@@ -134,7 +133,9 @@ public class RegisterActivity extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(RegisterActivity.this, str, Toast.LENGTH_SHORT).show();
+                Toast toast=Toast.makeText(RegisterActivity.this,null,Toast.LENGTH_SHORT);
+                toast.setText(str);
+                toast.show();
             }
         });
     }
@@ -144,7 +145,7 @@ public class RegisterActivity extends Activity {
         boolean isok = false;
         username  = u1.getText().toString();
         if(username.isEmpty()){
-            toast(" Please enter your username! ");
+            toast(" 请输入用户名! ");
             return isok;
         }
         else{

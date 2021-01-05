@@ -36,15 +36,9 @@ public class RegistServlet extends HttpServlet {
             List<User> userList = usersService.getUserList();
             Map<String,String> params = new HashMap<>();
             JSONObject jsonObject = new JSONObject();
-            boolean hasName = false;
+
             boolean hasUserName = false;
-            //name是否被注册
-            for(Person person:personList){
-                if(name.equals(person.getName())){
-                    hasName = true;
-                    break;
-                }
-            }
+
             //username是否被注册
             for(User user:userList){
                 if(username.equals(user.getUsername())){
@@ -52,10 +46,8 @@ public class RegistServlet extends HttpServlet {
                     break;
                 }
             }
-            if(hasName) {
-                params.put("Result","TheNameAlreadyExists");
-            }
-            else if(hasUserName){
+
+            if(hasUserName){
                 params.put("Result","TheUsernameAlreadyExists");
             }
             else{

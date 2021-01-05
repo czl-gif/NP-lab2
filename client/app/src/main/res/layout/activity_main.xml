@@ -125,7 +125,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:text="忘记密码?"
-                android:textColor="@color/design_default_color_primary_variant"
+                android:textColor="@color/black"
                 android:textSize="15sp"/>
 
             <TextView
@@ -136,7 +136,7 @@
                 android:layout_gravity="center"
                 android:text="点击此处"
                 android:onClick="Forget"
-                android:textColor="@color/design_default_color_error"
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
         </LinearLayout>
 
@@ -150,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
 
                 android:layout_weight="1"
                 android:background="@drawable/buttonstyle"
@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/buttonstyle"
                 android:layout_weight="1"
                 android:onClick="SignUp"

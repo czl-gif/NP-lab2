@@ -60,11 +60,20 @@ public class MainActivity extends Activity {
         user = usernameEditText.getText().toString();
         pass = passwordEditText.getText().toString();
         if(user.isEmpty()){
-            Toast.makeText(MainActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
+            Toast toast=Toast.makeText(MainActivity.this,null,Toast.LENGTH_SHORT);
+            toast.setText("请输入用户名!");
+            toast.show();
+            //Toast.makeText(MainActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
         }else if(pass.isEmpty()){
-            Toast.makeText(MainActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
+            Toast toast=Toast.makeText(MainActivity.this,null,Toast.LENGTH_SHORT);
+            toast.setText("请输入密码!");
+            toast.show();
+            //Toast.makeText(MainActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this,"正在登录",Toast.LENGTH_SHORT).show();
+            Toast toast=Toast.makeText(MainActivity.this,null,Toast.LENGTH_SHORT);
+            toast.setText("正在登录!");
+            toast.show();
+            //Toast.makeText(this,"正在登录",Toast.LENGTH_SHORT).show();
             new SignInProcess().execute(user, pass);
         }
     }
@@ -103,18 +112,24 @@ public class MainActivity extends Activity {
         }
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(MainActivity.this,result,Toast.LENGTH_SHORT).show();
+
             try {
                 JSONObject result_json = new JSONObject(result);
                 String answer = (String) result_json.get("Result");
-                Toast.makeText(MainActivity.this,answer,Toast.LENGTH_SHORT).show();
+
                 if(answer.equals("ssh")) {
-                    Toast.makeText(MainActivity.this,"用户不存在",Toast.LENGTH_SHORT).show();
+                    Toast toast=Toast.makeText(MainActivity.this,null,Toast.LENGTH_SHORT);
+                    toast.setText("用户不存在!");
+                    toast.show();
+                    //Toast.makeText(MainActivity.this,"用户不存在",Toast.LENGTH_SHORT).show();
                 } else if(answer.equals("2")){
-                    Toast.makeText(MainActivity.this,"密码错误",Toast.LENGTH_SHORT).show();
+                    Toast toast=Toast.makeText(MainActivity.this,null,Toast.LENGTH_SHORT);
+                    toast.setText("密码错误!");
+                    toast.show();
+                    //Toast.makeText(MainActivity.this,"密码错误",Toast.LENGTH_SHORT).show();
                 }
                 else if (answer.equals("3")){
-                    Toast.makeText(MainActivity.this,"lianjiechenggong",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this,"lianjiechenggong",Toast.LENGTH_SHORT).show();
                     SignInSuccess(result_json);
                 }
             } catch (Exception e) {
@@ -125,7 +140,10 @@ public class MainActivity extends Activity {
     }
     private void SignInSuccess(JSONObject info) {
         Intent intent = new Intent(this, WelcomeActivity.class);
-        Toast.makeText(this,"登录成功",Toast.LENGTH_SHORT).show();
+        Toast toast=Toast.makeText(MainActivity.this,null,Toast.LENGTH_SHORT);
+        toast.setText("登录成功!");
+        toast.show();
+        //Toast.makeText(this,"登录成功",Toast.LENGTH_SHORT).show();
         try {
             intent.putExtra("username", user);
             /*intent.putExtra("name", info.getString("name"));
@@ -157,7 +175,10 @@ public class MainActivity extends Activity {
     public void Forget(View view){
         user = usernameEditText.getText().toString();
         if(user.isEmpty()){
-            Toast.makeText(MainActivity.this,"请输入用户名!",Toast.LENGTH_SHORT).show();
+            Toast toast=Toast.makeText(MainActivity.this,null,Toast.LENGTH_SHORT);
+            toast.setText("请输入用户名!");
+            toast.show();
+            //Toast.makeText(MainActivity.this,"请输入用户名!",Toast.LENGTH_SHORT).show();
         }else{
             new ForgetRequest().execute(user, "shjdh");
         }
@@ -197,13 +218,15 @@ public class MainActivity extends Activity {
         }
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(MainActivity.this,result,Toast.LENGTH_SHORT).show();
             try {
                 JSONObject result_json = new JSONObject(result);
                 String answer = (String) result_json.get("Result");
-                Toast.makeText(MainActivity.this,answer,Toast.LENGTH_SHORT).show();
+
                 if(answer.equals("ssh")) {
-                    Toast.makeText(MainActivity.this,"用户不存在",Toast.LENGTH_SHORT).show();
+                    Toast toast=Toast.makeText(MainActivity.this,null,Toast.LENGTH_SHORT);
+                    toast.setText("用户不存在!");
+                    toast.show();
+                    //Toast.makeText(MainActivity.this,"用户不存在",Toast.LENGTH_SHORT).show();
                 } else {
                     //Toast.makeText(MainActivity.this,"lianjiechenggong",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, ForgetPasswordActivity.class);
