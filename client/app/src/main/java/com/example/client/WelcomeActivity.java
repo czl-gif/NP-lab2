@@ -30,6 +30,7 @@ public class WelcomeActivity extends Activity {
 
     private Button backToHomeButton;
     private Button viewInfoButton;
+    private Button cancellationButton;
     private TextView usname;
     private TextView Welet1;
     private TextView Welet2;
@@ -51,6 +52,7 @@ public class WelcomeActivity extends Activity {
     }
 
     public void initview() {
+        cancellationButton = findViewById(R.id.button11);
         viewInfoButton = findViewById(R.id.button5);
         backToHomeButton = findViewById(R.id.button6);
         Welet1 = findViewById(R.id.welet1);
@@ -58,6 +60,11 @@ public class WelcomeActivity extends Activity {
         Welet3 = findViewById(R.id.welet3);
         Welet4 = findViewById(R.id.welet4);
         usname = findViewById(R.id.tv2);
+    }
+    public void cancellation(View view){
+        Intent intent = new Intent(WelcomeActivity.this, cancellationActivity.class);
+        intent.putExtra("username",username);
+        startActivity(intent);
     }
 
     public void SignInRequest() {

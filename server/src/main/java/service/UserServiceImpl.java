@@ -78,4 +78,19 @@ public class UserServiceImpl implements UserService{
         isok = removeUser(user) && addUser(user);
         return isok;
     }
+
+    @Override
+    public boolean cancellation(User user) {
+        List<User> userList = getUserList();
+        boolean isok = false;
+        for(User u:userList){
+            if(u.getPassword().equals(user.getPassword())){
+                isok = true;break;
+            }
+        }
+        if (isok){
+            return removeUser(user);
+        }
+        return false;
+    }
 }

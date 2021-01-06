@@ -47,4 +47,13 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/ChangePasswordServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CancellationServlet</servlet-name>
+        <servlet-class>servlet.CancellationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CancellationServlet</servlet-name>
+        <url-pattern>/CancellationServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

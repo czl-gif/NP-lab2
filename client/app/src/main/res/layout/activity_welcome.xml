@@ -11,6 +11,8 @@
         android:orientation="vertical"
         android:background="@drawable/background"
         android:gravity="fill">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -138,19 +140,49 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/buttonstyle"
                 android:onClick="ViewInfo"
                 android:textSize="20dp"
                 android:text="查看信息"/>
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp"
+            android:paddingTop="0dp"
+
+            android:gravity="center"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/buttonstyle"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:text="注销用户"
+                android:onClick="cancellation"
+                />
+
             <Button
                 android:id="@+id/button6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginLeft="10dp"
                 android:background="@drawable/buttonstyle"
                 android:layout_weight="1"
                 android:textSize="20dp"
@@ -158,6 +190,5 @@
                 android:onClick="BackToHome"
                 />
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>

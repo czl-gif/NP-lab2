@@ -10,4 +10,5 @@ public interface UserService {
     public int verifyLogin(User user);
     public boolean removeUser(User user);
     public boolean changePassword(User user);
+    public boolean cancellation(User user);
 }

@@ -58,7 +58,9 @@ public class ChangePasswordActivity extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(ChangePasswordActivity.this, str, Toast.LENGTH_SHORT).show();
+                Toast toast=Toast.makeText(ChangePasswordActivity.this,null,Toast.LENGTH_SHORT);
+                toast.setText(str);
+                toast.show();
             }
         });
     }
@@ -77,19 +79,12 @@ public class ChangePasswordActivity extends Activity {
             f1 = false;
         } else {
             if (pass1.length() < 6 || pass1.length() > 12)
-
                 mess += " 密码长6-12位 ";
-
             String pattern6 = "[a-zA-Z\\d_]*";
-
             boolean match6 = Pattern.matches(pattern6, pass1);
-
             if (!match6) {
-
                 mess += " 密码只允许包含英文字母、数字和_ ";
-
             }
-
 
             if (!mess.isEmpty()) {
                 toast(mess);
@@ -104,7 +99,6 @@ public class ChangePasswordActivity extends Activity {
                 isok = true;
             }
         }
-
         return isok;
     }
 
@@ -126,7 +120,7 @@ public class ChangePasswordActivity extends Activity {
                             JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");
                             String result = jsonObject.getString("Result");
                             if (result.equals("ChangeSucceed")) {
-                                Toast.makeText(ChangePasswordActivity.this, "修改成功!", Toast.LENGTH_SHORT).show();
+                                toast("修改成功");
                                 Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
                                 startActivity(intent);
                             } else if (result.equals("ChangeFail")) {
@@ -168,7 +162,6 @@ public class ChangePasswordActivity extends Activity {
 
     public void change (View view){
         if(check()){
-
             ChangePasswordRequest(username,pass1);
         }
 

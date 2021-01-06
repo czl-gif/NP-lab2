@@ -175,8 +175,6 @@ public class RegisterActivity extends Activity {
             else{
                 String pattern3 = "[a-zA-Z\\d_]*";
 
-
-
                 if(!a1.getText().toString().isEmpty()){//若填写了年龄
                     age    = Integer.valueOf(a1.getText().toString());
                     String pattern4 = "^([1-9]\\d|\\d)$";

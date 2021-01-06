@@ -189,45 +189,6 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
         }
     };
 
-    //弹窗确认下发
-   /*private void alterWarning() {
-        //构造器
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Hint"); //设置标题
-        builder.setMessage(phone + " will get a verify code"); //设置内容
-//        builder.setIcon(R.mipmap.ic_launcher);//设置图标，图片id即可
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            //设置确定按钮
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(ForgetPasswordActivity.this, "cuowu", Toast.LENGTH_SHORT).show();
-                dialog.dismiss(); //关闭dialog
-                //通过sdk发送短信验证（请求获取短信验证码，在监听（eh）中返回）
-                SMSSDK.getVerificationCode(country, phone);
-                //做倒计时操作
-                Toast.makeText(ForgetPasswordActivity.this, "Has sent", Toast.LENGTH_SHORT).show();
-                btn_check.setEnabled(false);
-                btn_submit.setEnabled(true);
-                tm = new Timer();
-                tt = new TimerTask() {
-                    @Override
-                    public void run() {
-                        hd.sendEmptyMessage(TIME--);
-                    }
-                };
-                tm.schedule(tt,0,1000);
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() { //设置取消按钮
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                Toast.makeText(ForgetPasswordActivity.this, "Has canceled" , Toast.LENGTH_SHORT).show();
-            }
-        });
-        //参数都设置完成了，创建并显示出来
-        builder.create().show();
-    }*/
 
   //弹窗确认下发
     private void alterWarning() {
@@ -286,7 +247,6 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
                     if (matcher.find()) {//匹配手机号是否存在
                         //alterWarning();
                         ForgetPasswordRequest(username, phone);
-
                     }
                     else {
                         toast("Phone number's format error ");
